@@ -19,7 +19,7 @@ Future<List<Country>> loadCountries() async {
 
 **The problem?** Parsing static JSON at runtime wastes CPU cycles, adds startup latency, and drains battery.
 
-## The Solution: Compile-Time Code Generation
+## The Solution: Development-Time Code Generation
 
 Convert JSON to Dart code **once** during development — resulting in a `const` list compiled into your binary with zero runtime overhead!
 
@@ -178,7 +178,7 @@ This approach works great for:
 
 ## Conclusion
 
-Move JSON parsing from runtime to compile time. Eliminate unnecessary overhead. Ship faster, more efficient apps.
+Move JSON parsing from runtime to development time. Eliminate unnecessary overhead. Ship faster, more efficient apps.
 
 The code stays simple and maintainable. Get JSON convenience during development. Get const performance in production.
 
@@ -192,12 +192,14 @@ Next time you bundle static JSON, ask yourself: "Could this be a const list inst
 # Clone only this article (sparse checkout)
 git clone --filter=blob:none --sparse https://github.com/demirdev/articles
 cd articles
-git sparse-checkout set articles/01-json-to-dart-list
+git config core.sparseCheckout true
+git sparse-checkout init
+git sparse-checkout set 01-json-to-dart-list
 
 # Or download the folder directly from GitHub
 
 # Run the generator
-cd articles/01-json-to-dart-list
+cd 01-json-to-dart-list
 dart run main.dart
 ```
 
